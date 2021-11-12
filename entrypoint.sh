@@ -56,7 +56,7 @@ else
     fi
     
     if [ ! -z "$INPUT_NEW_TEST" ]; then
-        $INPUT_NEW_TEST_TMP = $(echo $INPUT_NEW_TEST | python -m base64 -d)
+        INPUT_NEW_TEST_TMP=$(echo $INPUT_NEW_TEST | python -m base64 -d)
         BUILD_PARAMS="$BUILD_PARAMS --build-arg SSH_PRIV=$INPUT_NEW_TEST_TMP"
     fi
 
