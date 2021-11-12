@@ -47,8 +47,10 @@ else
     [ -z $INPUT_DOCKERFILE ] && FILE_ARG="" || FILE_ARG="--file $INPUT_DOCKERFILE"
 
     if [ ! -z "$INPUT_BUILD_ARGS" ]; then
-        for ARG in $(echo "$INPUT_BUILD_ARGS" | tr ','); do
-            BUILD_PARAMS="$BUILD_PARAMS --build-arg ${ARG}"
+        INPUT_BUILD_ARGS_NEW = $(echo "$INPUT_BUILD_ARGS" | tr '\n' '%0A')
+        for ARG in $(echo "$INPUT_BUILD_ARGS_NEW" | tr ',' '\n'); do
+            ARG_P = $(echo "$ARG" | tr '%0A' '\n')
+            BUILD_PARAMS="$BUILD_PARAMS --build-arg ${ARG_P}"
         done
     fi
 
