@@ -47,6 +47,7 @@ else
     [ -z $INPUT_DOCKERFILE ] && FILE_ARG="" || FILE_ARG="--file $INPUT_DOCKERFILE"
 
     echo "$INPUT_NEW_TEST"
+    echo "$INPUT_NEW_TEST" | tail
 
     if [ ! -z "$INPUT_BUILD_ARGS" ]; then
         echo $INPUT_BUILD_ARGS
