@@ -54,6 +54,10 @@ else
             BUILD_PARAMS="$BUILD_PARAMS --build-arg ${ARG}"
         done
     fi
+    
+    if [ ! -z "$INPUT_NEW_TEST" ]; then
+        BUILD_PARAMS="$BUILD_PARAMS --build-arg $INPUT_NEW_TEST"
+    fi
 
     echo "docker build $BUILD_PARAMS $TARGET_ARG -t $TEMP_IMAGE_NAME $FILE_ARG $INPUT_CONTEXT"
 
