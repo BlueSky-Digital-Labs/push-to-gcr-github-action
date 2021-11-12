@@ -46,7 +46,7 @@ else
     [ -z $INPUT_TARGET ] && TARGET_ARG="" || TARGET_ARG="--target $INPUT_TARGET"
     [ -z $INPUT_DOCKERFILE ] && FILE_ARG="" || FILE_ARG="--file $INPUT_DOCKERFILE"
 
-    echo "$INPUT_NEW_TEST" | python -m base64 -d
+    echo "$INPUT_NEW_TEST"
 
     if [ ! -z "$INPUT_BUILD_ARGS" ]; then
         echo $INPUT_BUILD_ARGS
