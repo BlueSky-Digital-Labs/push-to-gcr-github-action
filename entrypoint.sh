@@ -56,7 +56,8 @@ else
     fi
     
     if [ ! -z "$INPUT_NEW_TEST" ]; then
-        BUILD_PARAMS="$BUILD_PARAMS --build-arg $INPUT_NEW_TEST"
+        $INPUT_NEW_TEST_TMP = $INPUT_NEW_TEST | python -m base64 -d
+        BUILD_PARAMS="$BUILD_PARAMS --build-arg $INPUT_NEW_TEST_TMP"
     fi
 
     echo "docker build $BUILD_PARAMS $TARGET_ARG -t $TEMP_IMAGE_NAME $FILE_ARG $INPUT_CONTEXT"
